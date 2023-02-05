@@ -1,0 +1,39 @@
+name: Test
+
+on:
+  workflow_dispatch:
+  push:
+#    branches-ignore:
+#      - 'master'
+#    tags-ignore:
+#      - '**'
+
+jobs:
+  test:
+    name: Test
+
+    runs-on: ubuntu-latest
+
+    steps:
+      # Setup
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2
+          coverage: none
+          extensions: opcache
+          ini-values: date.timezone=Europe/Amsterdam, assert.exception=1, zend.assertions=1
+      - name: Composer
+        uses: ramsey/composer-install@v2
+
+      - name: lint-yaml
+        run: bin/console lint:yaml config
+      - name: lint-container
+        run: bin/console lint:container
+      - name: psalm
+        run: vendor/bin/psalm --long-progress --stats --output-format=github
+      - name: PHPUnit
+        run: vendor/bin/phpunit
+
