@@ -8,11 +8,11 @@ use App\Domain\Object\ObjectInterface;
 /** @extends \ArrayObject<array-key, ObjectInterface> */
 final class Objects extends \ArrayObject
 {
-    public function totalSurface(): int | float
+    public function totalSurfaceArea(): int | float
     {
         return \array_reduce(
             (array) $this,
-            static fn (int | float $surface, ObjectInterface $object): int | float => $surface + $object->getSurface(),
+            static fn (int | float $surface, ObjectInterface $object): int | float => $surface + $object->getSurfaceArea(),
             0
         );
     }

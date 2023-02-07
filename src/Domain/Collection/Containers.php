@@ -13,7 +13,7 @@ final class Containers extends \ArrayObject
     public function sortBySizeSmallestFirst(): void
     {
         $this->uasort(
-            static fn (Container $container1, Container $container2): int => $container1->getSurface() <=> $container2->getSurface()
+            static fn (Container $container1, Container $container2): int => $container1->getSurfaceArea() <=> $container2->getSurfaceArea()
         );
     }
 }

@@ -16,8 +16,8 @@ final class CircleTest extends TestCase
     }
 
     #[DataProvider('circleGenerator')]
-    public function testGetSurface(float $expected, Circle $circle): void
+    public function testGetSurfaceArea(float $expected, Circle $circle): void
     {
-        self::assertSame($expected, $circle->getSurface());
+        self::assertSame($expected, $circle->getSurfaceArea());
     }
 }

@@ -3,6 +3,7 @@
 ## Quick start
 ```
 docker build -t container-surface .
+docker run -it --rm -v "$PWD":/srv/app -u $UID:$GID container-surface composer install
 docker run -it --rm -v "$PWD":/srv/app -u $UID:$GID container-surface bin/console app:transport
 ```
 
@@ -16,7 +17,7 @@ don't send a lot of half empty containers.
 Objects  
 We transport objects in a container at the moment we have 2 object
 types:
-- square  
+- rectangle  
  properties: width, length
 - circle  
  properties: radius
@@ -34,11 +35,11 @@ following transports
 #### Transport 1
 circle: radius 50  
 circle: radius 50  
-square: width 100, length 100
+rectangle: width 100, length 100
 #### Transport 2
-square: width 400, length 400  
+rectangle: width 400, length 400  
 circle: radius 100
 #### Transport 3
-square; width 150, length 100  
-square; width 50, length 50  
+rectangle; width 150, length 100  
+rectangle; width 50, length 50  
 circle; radius 50

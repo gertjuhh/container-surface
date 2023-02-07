@@ -5,5 +5,5 @@ namespace App\Domain\Object;
 
 interface ObjectInterface
 {
-    public function getSurface(): int | float;
+    public function getSurfaceArea(): int | float;
 }

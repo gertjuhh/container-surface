@@ -12,27 +12,37 @@ final class TransportCalculator
     public function getContainers(Containers $availableContainers, Objects $objects): Containers
     {
         $requiredContainers = new Containers([]);
-        $requiredSurface = $objects->totalSurface();
+        $requiredSurfaceArea = $objects->totalSurfaceArea();
 
-        if (count($availableContainers) == 0) {
+        if (0 === \count($availableContainers)) {
             throw new \RuntimeException('No containers available');
         }
 
         $availableContainers->sortBySizeSmallestFirst();
 
-        while ($requiredSurface > 0) {
-            foreach ($availableContainers as $container) {
-                $containerSurface = $container->getSurface();
-                if ($containerSurface >= $requiredSurface) {
-                    break;
-                }
-            }
-            \assert(isset($containerSurface) && \is_numeric($containerSurface));
-            $requiredSurface -= $containerSurface;
-            \assert(isset($container) && $container instanceof Container);
+        while ($requiredSurfaceArea > 0) {
+            $container = $this->determineSmallestAvailableContainer($requiredSurfaceArea, $availableContainers);
+            $requiredSurfaceArea -= $container->getSurfaceArea();
             $requiredContainers->append($container);
         }
 
         return $requiredContainers;
+    }
+
+    private function determineSmallestAvailableContainer(
+        int | float $requiredSurfaceArea,
+        Containers $availableContainers
+    ): Container {
+        foreach ($availableContainers as $container) {
+            $containerSurfaceArea = $container->getSurfaceArea();
+            if ($containerSurfaceArea >= $requiredSurfaceArea) {
+                return $container;
+            }
+        }
+
+        // fallback to biggest container available
+        \assert(isset($container) && $container instanceof Container);
+
+        return $container;
     }
 }

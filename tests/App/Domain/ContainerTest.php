@@ -16,8 +16,8 @@ final class ContainerTest extends TestCase
     }
 
     #[DataProvider('containerGenerator')]
-    public function testGetSurface(int $expected, Container $container): void
+    public function testGetSurfaceArea(int $expected, Container $container): void
     {
-        self::assertSame($expected, $container->getSurface());
+        self::assertSame($expected, $container->getSurfaceArea());
     }
 }

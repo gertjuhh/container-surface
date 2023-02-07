@@ -9,7 +9,7 @@ final readonly class Rectangle implements ObjectInterface
     {
     }
 
-    public function getSurface(): int
+    public function getSurfaceArea(): int
     {
         return $this->width * $this->length;
     }

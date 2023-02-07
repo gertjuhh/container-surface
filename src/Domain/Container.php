@@ -9,7 +9,7 @@ final class Container
     {
     }
 
-    public function getSurface(): int
+    public function getSurfaceArea(): int
     {
         return $this->width * $this->length;
     }

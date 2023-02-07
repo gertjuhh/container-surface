@@ -9,7 +9,7 @@ final readonly class Circle implements ObjectInterface
     {
     }
 
-    public function getSurface(): float
+    public function getSurfaceArea(): float
     {
         return M_PI * \pow($this->radius, 2);
     }

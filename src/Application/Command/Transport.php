@@ -72,7 +72,7 @@ final class Transport extends Command
 
     private function outputTransport(OutputInterface $output, Objects $transport, Containers $requiredContainers): void
     {
-        $output->writeln(\sprintf('Total size of the transport: %s', $transport->totalSurface()));
+        $output->writeln(\sprintf('Total size of the transport: %s', $transport->totalSurfaceArea()));
         $output->writeln('Required containers:');
 
         foreach ($requiredContainers as $container) {

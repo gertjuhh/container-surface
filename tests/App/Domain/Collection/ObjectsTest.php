@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 final class ObjectsTest extends TestCase
 {
-    public function testTotalSurface(): void
+    public function testTotalSurfaceArea(): void
     {
         $collection = new Objects(
             [
@@ -21,8 +21,8 @@ final class ObjectsTest extends TestCase
         );
 
         self::assertSame(
-            $object1->getSurface() + $object2->getSurface() + $object3->getSurface() + $object4->getSurface(),
-            $collection->totalSurface()
+            $object1->getSurfaceArea() + $object2->getSurfaceArea() + $object3->getSurfaceArea() + $object4->getSurfaceArea(),
+            $collection->totalSurfaceArea()
         );
     }
 }

@@ -16,8 +16,8 @@ final class RectangleTest extends TestCase
     }
 
     #[DataProvider('rectangleGenerator')]
-    public function testGetSurface(int $expected, Rectangle $rectangle): void
+    public function testGetSurfaceArea(int $expected, Rectangle $rectangle): void
     {
-        self::assertSame($expected, $rectangle->getSurface());
+        self::assertSame($expected, $rectangle->getSurfaceArea());
     }
 }
